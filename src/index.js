@@ -4,15 +4,64 @@ import dishesTemplates from './templates/dishcard.hbs';
 
 
 const dishesList = document.querySelector('.js-menu');
-const themeSwitch = document.querySelector ('#theme-switch-toggle');
+const themeSwitchIcon = document.querySelector ('#theme-switch-toggle');
+const bodyTag = document.querySelector ('body');
 
-console.log(themeSwitch);
+const Theme = {
+    LIGHT: 'light-theme',
+    DARK: 'dark-theme',
+  };
 
-themeSwitch.addEventListener('change', )
+    
+ dishesList.innerHTML = dishesTemplates(dishesArray);
+let isCheckedTheme = localStorage.getItem('checkedTheme');
+
+
+if(!isCheckedTheme) {
+    isCheckedTheme = Theme.LIGHT
+    bodyTag.classList.toggle(isCheckedTheme);
+    localStorage.setItem('checkedTheme', Theme.LIGHT);  
+} 
+else
+{
+    bodyTag.classList.toggle(isCheckedTheme); 
+
+    if (isCheckedTheme === Theme.LIGHT) {
+        themeSwitchIcon.checked = false;
+      } else {
+        themeSwitchIcon.checked = true;
+      }
+}
 
 
 
-dishesList.innerHTML = dishesTemplates(dishesArray);
+
+themeSwitchIcon.addEventListener('change', changeThemeBody);
+
+
+
+
+
+function changeThemeBody (event) {
+    
+    if(isCheckedTheme === Theme.LIGHT) { 
+        isCheckedTheme = Theme.DARK;
+    } else {
+        isCheckedTheme = Theme.LIGHT;
+    }
+    bodyTag.classList = isCheckedTheme;
+    localStorage.setItem('checkedTheme', isCheckedTheme);  
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
