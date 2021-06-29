@@ -26,11 +26,12 @@ else
 {
     bodyTag.classList.toggle(isCheckedTheme); 
 
-    if (isCheckedTheme === Theme.LIGHT) {
-        themeSwitchIcon.checked = false;
-      } else {
-        themeSwitchIcon.checked = true;
-      }
+    themeSwitchIcon.checked = isCheckedTheme === Theme.DARK;
+    // if (isCheckedTheme === Theme.LIGHT) {
+    //     themeSwitchIcon.checked = false;
+    //   } else {
+    //     themeSwitchIcon.checked = true;
+    //   }
 }
 
 
@@ -44,7 +45,7 @@ themeSwitchIcon.addEventListener('change', changeThemeBody);
 
 function changeThemeBody (event) {
     
-    if(isCheckedTheme === Theme.LIGHT) { 
+    if( event.target.checked) { 
         isCheckedTheme = Theme.DARK;
     } else {
         isCheckedTheme = Theme.LIGHT;
